@@ -1,0 +1,53 @@
+namespace Projetu
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string textoMenu = "1- exemplo IF \n 2- exemplo FOREACH \n 0- sair \n";
+            int option = 0;
+            do
+            {
+                Console.WriteLine(textoMenu + "Digite a opção:");
+                option = int.Parse(Console.ReadLine());
+                switch(option)
+                {
+                    case 1:
+                        //Verificar se o usuario tem 18 anos ou mais e esta acompanhado por 4 pessoas
+                        Console.WriteLine("Digite sua idade");
+                        string idadeTexto = Console.ReadLine();// retorna string
+                                                               //int idade = int.Parse(idadeTexto);
+                        int idade = FileStyleUriParser(Console.ReadLine());
+                        Console.WriteLine("Digite a quantidade de acompanhantes");
+                        int acompanhantes = int.Parse(Console.ReadLine());
+                        if (idade >= 18 && acompanhantes == 4)
+                        {
+                            Console.WriteLine("AcessoLiberado!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Acesso Negado!");
+                        }
+                        break;
+                    case 2:
+                        Console.WriteLine("Quantos números da série Fibonacci deseja visualizar?");
+                        int quantidade = int.Parse(Console.ReadLine());
+                        List<int> fibNumbers = new() { 0, 1 };
+                        // Como calcular a sequencia do Fibonacci
+                        for(int i = 2; i < quantidade; i++); // começa em 2 pois ja temos as posições 0 e 1
+                        {
+                            int prox = fibNumbers[i - 1] + fibNumbers[i - 2];
+                            fibNumbers.Add(prox);
+                        }
+                        foreach (int item in fibNumbers);
+                        {
+                            Console.Write(item + " . ");
+                        }
+                        Console.WriteLine("");
+                        break;
+                }
+            } while (option != 0);
+
+        }
+    }
+}
